@@ -1,33 +1,25 @@
 import java.util.Scanner;
-
-
 public class RunBloodData {
-    
-    public static void main(String[] args) {
-        
-        Scanner sc = new Scanner(System.in);
-        String bt, rh;
-        
-        System.out.print("\nEnter blood type of patient: ");
-        bt = sc.nextLine();
-        
-        System.out.print("Enter the Rhesus factor (+ or -): ");
-        rh = sc.nextLine();
-        
-        if(bt.isEmpty() && rh.isEmpty()) {
-            BloodData bd = new BloodData();
-            bd.display();
-        } else if(bt.isEmpty()) {
-            System.out.println("\nInvalid input!");
-        } else if(rh.isEmpty()) {
-            System.out.println("\nInvalid input.");
-        } else if(bt.equals("A") || bt.equals("B") || bt.equals("O") || bt.equals("AB")){
-            BloodData bd = new BloodData(bt, rh);
-            bd.display();
-        } else {
-            System.out.println("\nInvalid blood type.");
-        }
-        
-    }
-    
+public static void main(String[] args) {
+Scanner sc = new Scanner(System.in);
+BloodData bd = new BloodData();
+
+System.out.print("Enter blood type of patient: ");
+String input1 = sc.nextLine();
+System.out.print("Enter the Rhesus factor (+ or -): ");
+String input2 = sc.nextLine();
+String data = input1 + input2;
+if(data.isEmpty()){
+bd.display();
+}
+else if(data.equals("A+")||data.equals("A-")|| data.equals("B+")||data.equals("B-")||data. equals("AB+")||data.equals("AB-")||data. equals("O+")||data.equals("O-")){
+bd.setBloodType(input1);
+bd.setRhFactor(input2);
+bd.display();
+}
+else{
+System.out.println("Invalid input!");
+}
+sc.close();
+}
 }
